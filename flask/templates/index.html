@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediksi Kelulusan Mahasiswa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Gradient color palette - more vibrant and aesthetic */
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #a78bfa;
+      --tertiary: #f472b6;
+      --success: #10b981;
+      --success-light: rgba(16, 185, 129, 0.1);
+      --danger: #ef4444;
+      --danger-light: rgba(239, 68, 68, 0.1);
+      --light: #f9fafb;
+      --dark: #1e293b;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+      
+      /* New gradient variables */
+      --gradient-primary: linear-gradient(135deg, #6366f1, #a78bfa);
+      --gradient-secondary: linear-gradient(135deg, #a78bfa, #f472b6);
+      --gradient-success: linear-gradient(135deg, #10b981, #34d399);
+      --gradient-danger: linear-gradient(135deg, #ef4444, #f87171);
+      --gradient-bg: linear-gradient(135deg, #e0e7ff, #ede9fe, #fce7f3);
+    }
+    
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: var(--dark);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      background-color: #f5f7ff;
+    }
+    
+    /* Modern animated background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(120deg, rgba(99, 102, 241, 0.05) 0%, rgba(167, 139, 250, 0.05) 25%, 
+                       rgba(244, 114, 182, 0.05) 50%, rgba(16, 185, 129, 0.05) 75%, 
+                       rgba(99, 102, 241, 0.05) 100%);
+      background-size: 300% 300%;
+      z-index: -2;
+      animation: gradientFlow 15s ease infinite alternate;
+    }
+    
+    @keyframes gradientFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    /* Floating particles */
+    .particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+    
+    /* Mesh grid overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: -1;
+    }
+    
+    /* Geometric shapes */
+    .geometric-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      opacity: 0.4;
+    }
+    
+    .shape {
+      position: absolute;
+      opacity: 0.15;
+      filter: blur(2px);
+      pointer-events: none;
+    }
+    
+    .shape-circle {
+      border-radius: 50%;
+    }
+    
+    .shape-triangle {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 86px solid;
+    }
+    
+    .shape-square {
+      transform: rotate(45deg);
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 35px 25px;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    
+    header h1 {
+      margin: 0 0 15px 0;
+      font-weight: 700;
+      font-size: 2.4rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: -0.5px;
+    }
+    
+    /* Enhanced group banner */
+    .group-banner {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 50px;
+      margin: 0 auto 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .group-banner:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .group-badge {
+      background: white;
+      color: var(--primary-dark);
+      padding: 6px 15px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      letter-spacing: 0.5px;
+    }
+    
+    .group-banner p {
+      margin: 0;
+      font-size: 15px;
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    
+    .header-description {
+      margin: 15px auto 5px;
+      font-size: 1.1rem;
+      max-width: 600px;
+      opacity: 0.9;
+      line-height: 1.5;
+      font-weight: 400;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    /* Glowing effect behind the header */
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+      animation: headerGlow 8s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    
+    /* Ensure all header content is above the glow effect */
+    header h1, .group-banner, .header-description {
+      position: relative;
+      z-index: 1;
+    }
+    
+    @keyframes headerGlow {
+      0% {
+        opacity: 0.5;
+        transform: rotate(30deg) translateY(10%);
+      }
+      100% {
+        opacity: 0.8;
+        transform: rotate(30deg) translateY(-10%);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .group-banner {
+        padding: 8px 15px;
+      }
+      
+      .group-badge {
+        font-size: 14px;
+        padding: 5px 12px;
+      }
+      
+      .header-description {
+        font-size: 1rem;
+      }
+    }
+    
+    header p {
+      font-size: 1rem;
+      opacity: 0.9;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      margin-bottom: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Card hover effect */
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Card gradient border */
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient-primary);
+      opacity: 0.7;
+    }
+    
+    /* Glassmorphism effect for cards */
+    .card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    h2 {
+      font-size: 24px; /* Reduced from 28px */
+      margin-bottom: 20px; /* Reduced from 25px */
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 8px;
+      display: block;
+      color: var(--dark);
+    }
+    
+    .input-group {
+      margin-bottom: 18px; /* Reduced from 20px */
+      position: relative;
+    }
+    
+    .input-help {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 14px; /* Reduced from 14px 16px */
+      border: 1px solid #cbd5e1;
+      border-radius: 10px; /* Reduced from 12px */
+      background-color: var(--light);
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+    
+    input[type="range"] {
+      -webkit-appearance: none;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      padding: 0;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px; /* Reduced from 16px */
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      font-size: 15px; /* Reduced from 16px */
+      font-weight: 600;
+      border-radius: 10px; /* Reduced from 12px */
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    button::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+      transition: all 0.5s ease;
+      opacity: 0;
+    }
+    
+    button:hover::after {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+    
+    button:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+
+    .info {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .info-inner {
+      max-width: 100%;
+    }
+    
+    .info-card {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 10px; /* Reduced from 12px */
+      padding: 18px; /* Reduced from 20px */
+      margin-bottom: 18px; /* Reduced from 20px */
+      border-left: 4px solid;
+      border-image: var(--gradient-primary);
+      border-image-slice: 1;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .info-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0) 70%);
+      pointer-events: none;
+    }
+    
+    .info-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 6px 15px rgba(99, 102, 241, 0.1);
+    }
+    
+    .info-card h4 {
+      margin-top: 0;
+      margin-bottom: 8px; /* Reduced from 10px */
+      color: var(--dark);
+      font-size: 17px; /* Reduced from 18px */
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .result {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      animation: fadeIn 0.5s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .highlight {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .highlight i {
+      font-size: 24px;
+    }
+
+    .reset-btn {
+      margin-top: 20px;
+      background: var(--danger);
+      padding: 14px;
+    }
+
+    .reset-btn:hover {
+      background: #dc2626;
+      box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+    }
+
+    .progress-container {
+      background-color: #e5e7eb;
+      border-radius: 10px;
+      height: 14px;
+      overflow: hidden;
+      margin: 20px 0;
+      position: relative;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: {% if prediction_text and 'Tidak' in prediction_text %}var(--gradient-danger){% else %}var(--gradient-success){% endif %};
+      width: {{ (ipk|float / 4) * 100 if ipk is defined else 0 }}%;
+      transition: width 1s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .progress-bar::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0) 100%);
+      animation: progressShimmer 2s infinite;
+    }
+    
+    @keyframes progressShimmer {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    
+    .metrics-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Changed from 4 to 3 columns */
+      gap: 10px;
+      margin: 20px 0; /* Reduced from 25px */
+    }
+    
+    .metric-card {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 12px 8px;
+      border-radius: 10px; /* Reduced from 12px */
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .metric-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .metric-card:hover::before {
+      opacity: 1;
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.1);
+    }
+    
+    .metric-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 5px 0;
+    }
+    
+    .metric-label {
+      font-size: 11px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .algorithm-metrics {
+      margin-top: 30px;
+    }
+    
+    .algorithm-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px; /* Reduced from 12px */
+      padding: 14px; /* Reduced from 15px */
+      margin-bottom: 14px; /* Reduced from 15px */
+      border-left: 4px solid;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .algorithm-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Algorithm cards with more vibrant gradients */
+    .knn-card { 
+      border-color: transparent;
+      border-image: linear-gradient(to bottom, #3b82f6, #60a5fa);
+      border-image-slice: 1;
+    }
+    
+    .svm-card { 
+      border-color: transparent;
+      border-image: linear-gradient(to bottom, #8b5cf6, #a78bfa);
+      border-image-slice: 1;
+    }
+    
+    .rf-card { 
+      border-color: transparent;
+      border-image: linear-gradient(to bottom, #10b981, #34d399);
+      border-image-slice: 1;
+    }
+    
+    .algorithm-name {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .knn-name { color: #3b82f6; }
+    .svm-name { color: #8b5cf6; }
+    .rf-name { color: #10b981; }
+    
+    .metrics-grid {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .metric-box {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 6px 10px;
+      border-radius: 8px;
+      text-align: center;
+      flex: 1;
+      min-width: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: transform 0.2s ease;
+    }
+    
+    .metric-box:hover {
+      transform: scale(1.05);
+    }
+    
+    .metric-box-value {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    
+    .metric-box-label {
+      font-size: 10px;
+      color: #64748b;
+    }
+    
+    .prediction-result {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .prediction-result.success {
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(16, 185, 129, 0.05));
+      border-top: 4px solid;
+      border-image: var(--gradient-success);
+      border-image-slice: 1;
+    }
+    
+    .prediction-result.danger {
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(239, 68, 68, 0.05));
+      border-top: 4px solid;
+      border-image: var(--gradient-danger);
+      border-image-slice: 1;
+    }
+    
+    .prediction-result::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, 
+        {% if prediction_text and 'Tidak' in prediction_text %}
+          rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0) 70%
+        {% else %}
+          rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0) 70%
+        {% endif %}
+      );
+      pointer-events: none;
+    }
+    
+    .prediction-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .prediction-icon {
+      font-size: 24px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .prediction-icon::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+      top: -50%;
+      left: -50%;
+    }
+    
+    .prediction-icon.success {
+      background: var(--gradient-success);
+      color: white;
+      animation: successPulse 2s infinite alternate;
+    }
+    
+    .prediction-icon.danger {
+      background: var(--gradient-danger);
+      color: white;
+      animation: dangerPulse 2s infinite alternate;
+    }
+    
+    @keyframes successPulse {
+      0% {
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+      }
+    }
+    
+    @keyframes dangerPulse {
+      0% {
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+      }
+    }
+    
+    .prediction-icon:hover {
+      transform: rotate(15deg);
+    }
+    
+    .prediction-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0;
+      color: {% if prediction_text and 'Tidak' in prediction_text %}var(--danger){% else %}var(--success){% endif %};
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .prediction-subtitle {
+      font-size: 14px;
+      color: #64748b;
+      margin: 5px 0 0 0;
+    }
+    
+    .prediction-details {
+      margin-top: 15px;
+      padding: 15px;
+      background: {% if prediction_text and 'Tidak' in prediction_text %}var(--danger-light){% else %}var(--success-light){% endif %};
+      border-radius: 12px;
+      font-weight: 500;
+      color: {% if prediction_text and 'Tidak' in prediction_text %}#b91c1c{% else %}#047857{% endif %};
+    }
+
+    .section-nav {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0; /* Reduced from 30px */
+      gap: 12px; /* Reduced from 15px */
+      perspective: 1000px;
+    }
+    
+    .section-nav-btn {
+      padding: 10px 18px; /* Reduced from 12px 20px */
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px; /* Reduced from 12px */
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-nav-btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,255,255,0.2) 50%, 
+        rgba(255,255,255,0) 100%);
+      transition: all 0.5s ease;
+    }
+    
+    .section-nav-btn:hover::after {
+      left: 100%;
+    }
+    
+    .section-nav-btn:hover {
+      background: rgba(99, 102, 241, 0.1);
+      transform: translateY(-2px) rotateX(5deg);
+      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+    }
+    
+    .section-nav-btn.active {
+      background: var(--gradient-primary);
+      color: white;
+      transform: translateY(0) rotateX(0);
+    }
+
+    .section {
+      display: none;
+    }
+    
+    .section.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Algorithm selection styles */
+    .algorithm-selection {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+    
+    .algorithm-option {
+      display: flex;
+      align-items: center;
+      padding: 14px; /* Reduced from 15px */
+      border-radius: 10px; /* Reduced from 12px */
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .algorithm-option:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Glowing effect for selected algorithm */
+    .algorithm-option.selected {
+      border: 2px solid transparent;
+      background: rgba(99, 102, 241, 0.05);
+      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.1);
+      animation: selectedPulse 2s infinite alternate;
+    }
+    
+    .algorithm-option.selected .algorithm-icon {
+      animation: iconPulse 2s infinite alternate;
+    }
+    
+    @keyframes selectedPulse {
+      0% {
+        box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+      }
+      100% {
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+      }
+    }
+    
+    @keyframes iconPulse {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1) rotate(5deg);
+      }
+    }
+    
+    .algorithm-icon {
+      width: 45px; /* Reduced from 50px */
+      height: 45px; /* Reduced from 50px */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px; /* Reduced from 20px */
+      margin-right: 12px; /* Reduced from 15px */
+      color: white;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .algorithm-icon::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+      top: -50%;
+      left: -50%;
+      transition: all 0.5s ease;
+    }
+    
+    .algorithm-option:hover .algorithm-icon::after {
+      top: -30%;
+      left: -30%;
+    }
+    
+    .knn-icon {
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+    }
+    
+    .svm-icon {
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+    }
+    
+    .rf-icon {
+      background: linear-gradient(135deg, #10b981, #34d399);
+      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+    }
+    
+    .algorithm-details {
+      flex: 1;
+    }
+    
+    .algorithm-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--dark);
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .algorithm-accuracy {
+      font-size: 14px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .algorithm-desc {
+      font-size: 13px;
+      color: #64748b;
+    }
+    
+    .algorithm-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+    }
+    
+    .radio-label {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    
+    .radio-label::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+    
+    .algorithm-option.selected .radio-label {
+      border-color: var(--primary);
+    }
+    
+    .algorithm-option.selected .radio-label::after {
+      opacity: 1;
+    }
+    
+    .algorithm-metrics-mini {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    
+    .metric-mini {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      flex: 1;
+      transition: transform 0.2s ease;
+    }
+    
+    .metric-mini:hover {
+      transform: scale(1.05);
+    }
+    
+    .metric-mini-value {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--primary);
+    }
+    
+    .metric-mini-label {
+      font-size: 11px;
+      color: #64748b;
+    }
+    
+    /* Algorithm info */
+    .algorithm-info {
+      display: none;
+    }
+    
+    .algorithm-info.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    .confidence-bar {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      margin: 15px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .confidence-level {
+      height: 100%;
+      background: {% if prediction_text and 'Tidak' in prediction_text %}var(--gradient-danger){% else %}var(--gradient-success){% endif %};
+      width: {{ confidence if confidence is defined else 0 }}%;
+      transition: width 1s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .confidence-level::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0) 100%);
+      animation: confidenceShimmer 2s infinite;
+    }
+    
+    @keyframes confidenceShimmer {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    
+    .confidence-text {
+      font-size: 14px;
+      color: #64748b;
+      text-align: right;
+      margin-top: 5px;
+    }
+    
+    /* Floating particles with more variety */
+    .particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .metrics-grid {
+        flex-wrap: wrap;
+      }
+      
+      .metrics-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .section-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .section-nav-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .metrics-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      
+      .section-nav {
+        flex-wrap: wrap;
+      }
+      
+      .section-nav-btn {
+        flex: 1;
+        min-width: 120px;
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Particles background -->
+<div class="particles-container" id="particles-container"></div>
+<div class="geometric-shapes" id="geometric-shapes"></div>
+
+<header>
+  <h1><i class="fas fa-graduation-cap"></i> Prediksi Kelulusan Mahasiswa</h1>
+  <div class="group-banner">
+    <div class="group-badge">Kelompok 8</div>
+    <p>Pembelajaran Machine Learning</p>
+  </div>
+  <p class="header-description">Gunakan data akademikmu untuk memprediksi kelulusan dengan algoritma machine learning</p>
+</header>
+
+<div class="container">
+  <!-- Navigation Buttons -->
+  <div class="section-nav">
+    <button class="section-nav-btn active" onclick="showSection('info-section')">
+      <i class="fas fa-info-circle"></i> Tentang Sistem
+    </button>
+    <button class="section-nav-btn" onclick="showSection('form-section')">
+      <i class="fas fa-edit"></i> Isi Formulir
+    </button>
+    {% if prediction_text %}
+    <button class="section-nav-btn" onclick="showSection('result-section')">
+      <i class="fas fa-chart-pie"></i> Hasil Prediksi
+    </button>
+    {% endif %}
+  </div>
+
+  <!-- INFO SECTION -->
+  <div id="info-section" class="section active">
+    <div class="card">
+      <h2>Tentang Sistem Prediksi</h2>
+      
+      <div class="info-card">
+        <h4><i class="fas fa-info-circle"></i> Apa Itu Prediksi Kelulusan?</h4>
+        <p class="info">Sistem ini menggunakan algoritma machine learning untuk memprediksi status kelulusan mahasiswa berdasarkan data akademik dan demografis. Prediksi ini dapat membantu mengidentifikasi mahasiswa yang berisiko tidak lulus sehingga dapat diberikan dukungan lebih awal.</p>
+      </div>
+      
+      <div class="info-card">
+        <h4><i class="fas fa-cogs"></i> Cara Kerja Sistem</h4>
+        <p class="info">Data yang Anda masukkan akan diproses oleh model machine learning yang telah dilatih menggunakan dataset mahasiswa sebelumnya. Model akan menganalisis pola dan memberikan prediksi berdasarkan karakteristik data Anda.</p>
+      </div>
+      
+      <div class="algorithm-metrics">
+        <h4><i class="fas fa-chart-line"></i> Performa Algoritma</h4>
+        
+        <div class="algorithm-card knn-card">
+          <div class="algorithm-name knn-name"><i class="fas fa-users"></i> K-Nearest Neighbors (KNN)</div>
+          <p class="info">Algoritma yang memprediksi berdasarkan kemiripan dengan data mahasiswa lain yang terdekat.</p>
+          <div class="metrics-grid">
+            <div class="metric-box">
+              <div class="metric-box-value">96.44%</div>
+              <div class="metric-box-label">Akurasi</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">96.32%</div>
+              <div class="metric-box-label">Presisi</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">96.44%</div>
+              <div class="metric-box-label">Recall</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">96.13%</div>
+              <div class="metric-box-label">F1-Score</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="algorithm-card svm-card">
+          <div class="algorithm-name svm-name"><i class="fas fa-project-diagram"></i> Support Vector Machine (SVM)</div>
+          <p class="info">Algoritma yang mencari batas optimal untuk memisahkan kategori kelulusan.</p>
+          <div class="metrics-grid">
+            <div class="metric-box">
+              <div class="metric-box-value">98.22%</div>
+              <div class="metric-box-label">Akurasi</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">98.18%</div>
+              <div class="metric-box-label">Presisi</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">98.22%</div>
+              <div class="metric-box-label">Recall</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">98.18%</div>
+              <div class="metric-box-label">F1-Score</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="algorithm-card rf-card">
+          <div class="algorithm-name rf-name"><i class="fas fa-tree"></i> Random Forest</div>
+          <p class="info">Algoritma ensemble yang menggunakan banyak pohon keputusan untuk prediksi yang lebih akurat.</p>
+          <div class="metrics-grid">
+            <div class="metric-box">
+              <div class="metric-box-value">95.11%</div>
+              <div class="metric-box-label">Akurasi</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">95.07%</div>
+              <div class="metric-box-label">Presisi</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">95.11%</div>
+              <div class="metric-box-label">Recall</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-value">94.26%</div>
+              <div class="metric-box-label">F1-Score</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button onclick="showSection('form-section')" style="margin-top: 20px;">
+        <i class="fas fa-arrow-right"></i> Lanjut ke Formulir
+      </button>
+    </div>
+  </div>
+
+  <!-- FORM SECTION -->
+  <div id="form-section" class="section">
+    <div class="card">
+      <h2>Formulir Data Akademik</h2>
+      <form method="POST" action="/predict">
+        <div class="input-group">
+          <label>Jenis Kelamin:</label>
+          <select name="jenis_kelamin" required>
+            <option value="">-- Pilih Jenis Kelamin --</option>
+            <option value="0" {% if jenis_kelamin == '0' %}selected{% endif %}>Laki-laki</option>
+            <option value="1" {% if jenis_kelamin == '1' %}selected{% endif %}>Perempuan</option>
+          </select>
+          <div class="input-help">Data demografis untuk analisis pola kelulusan</div>
+        </div>
+
+        <div class="input-group">
+          <label>Umur:</label>
+          <input type="number" name="umur" min="17" max="60" required value="{{ umur if umur is defined else '' }}">
+          <div class="input-help">Rentang umur mahasiswa (17-60 tahun) - Faktor umur dapat mempengaruhi kedewasaan belajar, tanggung jawab, dan kemampuan adaptasi.</div>
+        </div>
+
+        <div class="input-group">
+          <label>Status Menikah:</label>
+          <select name="status_menikah" required>
+            <option value="">-- Pilih Status --</option>
+            <option value="0" {% if status_menikah == '0' %}selected{% endif %}>Belum Menikah</option>
+            <option value="1" {% if status_menikah == '1' %}selected{% endif %}>Menikah</option>
+          </select>
+          <div class="input-help">Status pernikahan dapat mempengaruhi pola belajar, manajemen waktu, dan prioritas dalam kehidupan akademik.</div>
+        </div>
+
+        <div class="input-group">
+          <label>Kehadiran (%):</label>
+          <input type="number" name="kehadiran" min="0" max="100" required value="{{ kehadiran if kehadiran is defined else '' }}">
+          <div class="input-help">Persentase kehadiran dalam perkuliahan (0-100%) - Kehadiran yang tinggi menunjukkan komitmen dan konsistensi dalam proses pembelajaran.</div>
+        </div>
+
+        <div class="input-group">
+          <label>Partisipasi Diskusi:</label>
+          <input type="number" name="diskusi" min="0" max="100" required value="{{ diskusi if diskusi is defined else '' }}">
+          <div class="input-help">Skor partisipasi dalam diskusi kelas (0-100) - Mencakup keaktifan bertanya, menjawab, dan berkontribusi dalam diskusi kelas.</div>
+        </div>
+
+        <div class="input-group">
+          <label>Nilai Tugas:</label>
+          <input type="number" name="tugas" min="0" max="100" required value="{{ tugas if tugas is defined else '' }}">
+          <div class="input-help">Rata-rata nilai tugas (0-100) - Kemampuan mahasiswa dalam menyelesaikan tugas-tugas dengan tepat waktu dan berkualitas.</div>
+        </div>
+
+        <div class="input-group">
+          <label>Aktivitas E-learning:</label>
+          <input type="number" name="elearning" min="0" max="100" required value="{{ elearning if elearning is defined else '' }}">
+          <div class="input-help">Skor aktivitas pada platform e-learning (0-100) - Mencakup pengerjaan kuis online, akses materi, dan partisipasi dalam forum diskusi virtual</div>
+        </div>
+
+        <div class="input-group">
+          <label>IPK:</label>
+          <input type="number" name="ipk" min="0" max="4" step="0.01" required value="{{ ipk if ipk is defined else '' }}">
+          <div class="input-help">Indeks Prestasi Kumulatif (0.00 - 4.00) - Merupakan Rata-rata nilai akademik mahasiswa dalam semua mata kuliah yang telah diambil.</div>
+        </div>
+
+        <div class="input-group">
+          <label>Metode Prediksi:</label>
+          <select name="metode" required id="metode-select" onchange="showAlgorithmInfo()">
+            <option value="KNN" {% if metode == 'KNN' %}selected{% endif %}>KNN (K-Nearest Neighbors)</option>
+            <option value="SVM" {% if metode == 'SVM' %}selected{% endif %}>SVM (Support Vector Machine)</option>
+            <option value="Random Forest" {% if metode == 'Random Forest' %}selected{% endif %}>Random Forest</option>
+          </select>
+          <div class="input-help">Pilih algoritma machine learning untuk prediksi</div>
+        </div>
+        
+        <!-- Algorithm-specific information -->
+        <div class="algorithm-info" id="KNN-info">
+          <div class="info-card">
+            <h4><i class="fas fa-users"></i> Tentang KNN</h4>
+            <p class="info">KNN memprediksi berdasarkan kemiripan dengan data mahasiswa lain yang terdekat. Algoritma ini cocok untuk dataset yang memiliki pola lokal yang kuat.</p>
+          </div>
+        </div>
+        
+        <div class="algorithm-info" id="SVM-info">
+          <div class="info-card">
+            <h4><i class="fas fa-project-diagram"></i> Tentang SVM</h4>
+            <p class="info">SVM mencari batas optimal untuk memisahkan kategori kelulusan. Algoritma ini efektif untuk dataset dengan dimensi tinggi dan batas keputusan yang kompleks.</p>
+          </div>
+        </div>
+        
+        <div class="algorithm-info" id="Random Forest-info">
+          <div class="info-card">
+            <h4><i class="fas fa-tree"></i> Tentang Random Forest</h4>
+            <p class="info">Random Forest menggunakan banyak pohon keputusan untuk prediksi yang lebih akurat. Algoritma ini sangat baik dalam menangani berbagai jenis data dan tahan terhadap overfitting.</p>
+          </div>
+        </div>
+
+        <button type="submit"><i class="fas fa-rocket"></i> Prediksi Sekarang</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- RESULT SECTION -->
+  {% if prediction_text %}
+  <div id="result-section" class="section">
+    <div class="card">
+      <h2>Hasil Prediksi</h2>
+      
+      <div class="prediction-result {% if 'Tidak' in prediction_text %}danger{% else %}success{% endif %}">
+        <div class="prediction-header">
+          <div class="prediction-icon {% if 'Tidak' in prediction_text %}danger{% else %}success{% endif %}">
+            <i class="fas {% if 'Tidak' in prediction_text %}fa-times{% else %}fa-check{% endif %}"></i>
+          </div>
+          <div>
+            <h3 class="prediction-title">{{ prediction_text }}</h3>
+            <p class="prediction-subtitle">Menggunakan metode {{ metode }}</p>
+          </div>
+        </div>
+        
+        {% if confidence is defined %}
+        <div class="confidence-container">
+          <p>Tingkat Keyakinan Prediksi:</p>
+          <div class="confidence-bar">
+            <div class="confidence-level" style="width: {{ confidence }}%;"></div>
+          </div>
+          <div class="confidence-text">{{ confidence }}%</div>
+        </div>
+        {% endif %}
+        
+        <div class="progress-container">
+          <div class="progress-bar" style="background: linear-gradient(to right, {% if 'Tidak' in prediction_text %}#ef4444, #f87171{% else %}#10b981, #34d399{% endif %});"></div>
+        </div>
+        
+        <div class="metrics-container">
+          <div class="metric-card">
+            <div class="metric-label">Jenis Kelamin</div>
+            <div class="metric-value">{{ 'Perempuan' if jenis_kelamin == '1' else 'Laki-laki' }}</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Umur</div>
+            <div class="metric-value">{{ umur }} tahun</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Status</div>
+            <div class="metric-value">{{ 'Menikah' if status_menikah == '1' else 'Belum Menikah' }}</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Kehadiran</div>
+            <div class="metric-value">{{ kehadiran }}%</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Diskusi</div>
+            <div class="metric-value">{{ diskusi }}</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Tugas</div>
+            <div class="metric-value">{{ tugas }}</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">E-learning</div>
+            <div class="metric-value">{{ elearning }}</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">IPK</div>
+            <div class="metric-value">{{ ipk }}</div>
+          </div>
+        </div>
+        
+        <div class="prediction-details">
+          <p>{% if 'Tidak' in prediction_text %}
+            Berdasarkan data yang dimasukkan, sistem memprediksi Anda berisiko tidak lulus. Pertimbangkan untuk meningkatkan kehadiran dan partisipasi dalam pembelajaran.
+          {% else %}
+            Berdasarkan data yang dimasukkan, sistem memprediksi Anda akan lulus. Tetap pertahankan performa akademik Anda!
+          {% endif %}</p>
+          
+          {% if metode == 'KNN' %}
+          <p>Algoritma KNN membandingkan data Anda dengan data mahasiswa lain yang memiliki karakteristik serupa untuk menentukan prediksi.</p>
+          {% elif metode == 'SVM' %}
+          <p>Algoritma SVM menggunakan batas keputusan optimal untuk mengklasifikasikan data Anda ke dalam kategori lulus atau tidak lulus.</p>
+          {% elif metode == 'Random Forest' %}
+          <p>Algoritma Random Forest menggunakan kumpulan pohon keputusan untuk menganalisis pola dalam data Anda dan memberikan prediksi yang akurat dan stabil.</p>
+          {% endif %}
+        </div>
+
+        <form method="GET" action="/">
+          <button type="submit" class="reset-btn"><i class="fas fa-redo-alt"></i> Coba Prediksi Baru</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  // Fungsi untuk menampilkan section yang dipilih
+  function showSection(sectionId) {
+    // Sembunyikan semua section
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+      section.classList.remove('active');
+    });
+    
+    // Tampilkan section yang dipilih
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+      selectedSection.classList.add('active');
+    }
+    
+    // Update status active pada tombol navigasi
+    const navButtons = document.querySelectorAll('.section-nav-btn');
+    navButtons.forEach(button => {
+      button.classList.remove('active');
+      if (button.getAttribute('onclick').includes(sectionId)) {
+        button.classList.add('active');
+      }
+    });
+  }
+  
+  // Fungsi untuk menampilkan informasi algoritma yang dipilih
+  function showAlgorithmInfo() {
+    // Sembunyikan semua informasi algoritma
+    const algoInfos = document.querySelectorAll('.algorithm-info');
+    algoInfos.forEach(info => {
+      info.classList.remove('active');
+    });
+    
+    // Tampilkan informasi algoritma yang dipilih
+    const selectedAlgo = document.getElementById('metode-select').value;
+    const selectedAlgoInfo = document.getElementById(selectedAlgo + '-info');
+    if (selectedAlgoInfo) {
+      selectedAlgoInfo.classList.add('active');
+    }
+  }
+
+  // Cek apakah ada hasil prediksi dan arahkan ke halaman hasil jika ada
+  document.addEventListener('DOMContentLoaded', function() {
+    {% if prediction_text %}
+      // Jika ada hasil prediksi, tampilkan section hasil
+      showSection('result-section');
+    {% elif jenis_kelamin or umur or ipk %}
+      // Jika ada data yang tersimpan dari URL tapi tidak ada hasil prediksi,
+      // arahkan ke form section
+      showSection('form-section');
+    {% endif %}
+    
+    // Tampilkan informasi algoritma yang dipilih saat halaman dimuat
+    showAlgorithmInfo();
+  });
+</script>
+
+<script>
+  // Create animated particles and shapes
+  document.addEventListener('DOMContentLoaded', function() {
+    const particlesContainer = document.getElementById('particles-container');
+    const shapesContainer = document.getElementById('geometric-shapes');
+    const colors = ['#6366f1', '#a78bfa', '#f472b6', '#10b981'];
+    
+    // Create particles
+    for (let i = 0; i < 50; i++) {
+      createParticle(particlesContainer, colors);
+    }
+    
+    // Create geometric shapes
+    for (let i = 0; i < 15; i++) {
+      createShape(shapesContainer, colors);
+    }
+    
+    // Show algorithm info for the selected algorithm
+    if (typeof showAlgorithmInfo === 'function') {
+      showAlgorithmInfo();
+    }
+  });
+  
+  function createParticle(container, colors) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    
+    // Random properties
+    const size = Math.random() * 15 + 5;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const left = Math.random() * 100;
+    const duration = Math.random() * 20 + 10;
+    const delay = Math.random() * 5;
+    
+    // Apply styles
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.backgroundColor = color;
+    particle.style.left = `${left}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.opacity = Math.random() * 0.3 + 0.1;
+    
+    // Apply animation
+    particle.style.animation = `float ${duration}s linear ${delay}s infinite`;
+    
+    // Add to container
+    container.appendChild(particle);
+  }
+  
+  function createShape(container, colors) {
+    const shape = document.createElement('div');
+    shape.classList.add('shape');
+    
+    // Random properties
+    const size = Math.random() * 100 + 50;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const left = Math.random() * 100;
+    const top = Math.random() * 100;
+    const duration = Math.random() * 30 + 20;
+    const delay = Math.random() * 5;
+    const type = Math.floor(Math.random() * 3); // 0: circle, 1: triangle, 2: square
+    
+    // Apply common styles
+    shape.style.left = `${left}%`;
+    shape.style.top = `${top}%`;
+    
+    // Apply shape-specific styles
+    if (type === 0) {
+      // Circle
+      shape.classList.add('shape-circle');
+      shape.style.width = `${size}px`;
+      shape.style.height = `${size}px`;
+      shape.style.backgroundColor = color;
+    } else if (type === 1) {
+      // Triangle
+      shape.classList.add('shape-triangle');
+      shape.style.borderBottomColor = color;
+      shape.style.borderLeftWidth = `${size/2}px`;
+      shape.style.borderRightWidth = `${size/2}px`;
+      shape.style.borderBottomWidth = `${size * 0.866}px`;
+    } else {
+      // Square
+      shape.classList.add('shape-square');
+      shape.style.width = `${size}px`;
+      shape.style.height = `${size}px`;
+      shape.style.backgroundColor = color;
+    }
+    
+    // Apply animation
+    shape.style.animation = `float ${duration}s linear ${delay}s infinite`;
+    
+    // Add to container
+    container.appendChild(shape);
+  }
+  
+  // Add these animations
+  document.head.insertAdjacentHTML('beforeend', `
+    <style>
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+        }
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.2;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.3;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.2;
+        }
+      }
+    </style>
+  `);
+</script>
+
+</body>
+</html>
